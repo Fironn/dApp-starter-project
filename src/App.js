@@ -144,6 +144,7 @@ const App = () => {
           contractABI,
           signer
         );
+
         let count = await wavePortalContract.getTotalWaves();
         console.log("Retrieved total wave count...", count.toNumber());
 
@@ -156,8 +157,9 @@ const App = () => {
         );
         /* コントラクトに👋（wave）を書き込む */
         const waveTxn = await wavePortalContract.wave(messageValue, {
-          gasLimit: 300000,
+          gasLimit: 500000,
         });
+
         console.log("Mining...", waveTxn.hash);
         await waveTxn.wait();
         console.log("Mined -- ", waveTxn.hash);
